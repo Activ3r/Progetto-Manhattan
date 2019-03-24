@@ -31,10 +31,12 @@
         
     }
 
-    function get_grups_list() {  
+    function get_grups_list() {
+	    #TODO:  ottenere lista di tutti i gruppi con i permessi e i dati
     }
 
     function create_user() {  
+	    
     }
 
     function create_group() {  
