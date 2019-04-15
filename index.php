@@ -13,7 +13,6 @@
     <!--/include-->
 </head>
 <body>
-    <h1>Ldap tool </h1>
 
 <!--PHP START-->
     <?php
@@ -50,15 +49,19 @@
 
             <!-- Login Form -->
             <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="user_name" id="user_name" class="fadeIn second" name="login" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
             </form>
 
             </div>
         </div>
-    <?php
 
+        <?php
+            $user_name = $_POST["user_name"];
+            $password = $_POST["password"];
+
+        return array($user_name,$password);
     }
 	
     function get_users_list() {  
@@ -82,8 +85,10 @@
         #TODO:  possibilità di modificare attributi utente e assegnarlo a gruppi
 
     }
+
 ?>
 <!--PHP END-->
+
 </body>
 </html>
 
