@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>LDAP tool</title>
+
+    <!--include-->
+    <!--/include-->
 </head>
 <body>
     <h1>Ldap tool </h1>
@@ -21,16 +24,15 @@
         
         if (ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
 
-            echo "ldap connected";
+           return TRUE;
         
         } 
         else {
-            echo "ERROR -> ldap NOT connected";
+            return FALSE;
         }
 
     }
 	
-    
     function get_users_list() {  
         #TODO:  ottenere lista di tutti gli utenti con i permessi e i dati
         
@@ -52,7 +54,6 @@
         #TODO:  possibilità di modificare attributi utente e assegnarlo a gruppi
 
     }
-
 ?>
 <!--PHP END-->
 </body>
