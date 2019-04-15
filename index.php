@@ -7,9 +7,9 @@
 
     <!--include-->
     <link rel="stylesheet" type="text/css" href="all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--/include-->
 </head>
 <body>
@@ -42,10 +42,10 @@
             <form action="index.php" method="POST">
                 <h2 class="text-center">Log in</h2>    
                 <div class="form-group">
-                    <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="Username" required="required">
+                    <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="username" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" id = "password" name="password" class="form-control" placeholder="Password" required="required">
+                    <input type="password" id = "password" name="password" class="form-control" placeholder="password" required="required">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Log in</button>
@@ -88,12 +88,38 @@
 
     }
 
-    
-    login_form()
 ?>
 
 <!--PHP END-->
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.php">LDAP tool</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> visualizza
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">utenti</a>
+          <a class="dropdown-item" href="#">gruppi</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> crea
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">utenti</a>
+          <a class="dropdown-item" href="#">gruppi</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">modifica utente</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 </body>
 </html>
 
