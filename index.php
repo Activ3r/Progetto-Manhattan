@@ -18,20 +18,23 @@
     <?php
 
     function ldap_connection(){
-        $ldap_dn = "domain\user";
-        $ldap_password = "Abc123";
+        $ldap_dn = "LDAP_CON_PERMESSI";
+        $ldap_password = "Qwasyx12!";
         
-        $ldap_con = ldap_connect("ldap.forumsys.com");
+        $ldap_con = ldap_connect("localhost");
         
         ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
         
         if (ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
 
-           return TRUE;
+           #return TRUE;
+           echo "ldap connesso";
         
         } 
         else {
-            return FALSE;
+
+            #return FALSE;
+            echo "ldap NON connesso";
         }
 
     }
@@ -61,8 +64,6 @@
     }
 
     function login_validate($user_name,$password){
-        echo("user_name: " . $_POST['user_name'] . "<br />\n");
-        echo("password: " . $_POST['password'] . "<br />\n");
         #TODO: verificare con autenticazione tramite LDAP
     }
 	
@@ -124,13 +125,15 @@
 </nav>
 <!-- /Header -->
 
+<?php 
+ldap_connection();
+?>
+
 <!-- Footer -->
 <footer class="page-footer font-small blue">
 
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-  </div>
-
+  <div class="footer-copyright text-center py-3">© 2019 Copyright</div>
+  
 </footer>
 <!--/Footer -->
 
