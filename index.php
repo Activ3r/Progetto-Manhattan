@@ -36,32 +36,34 @@
 
     }
 
-    function login(){
+    function login_form(){
         ?>
-        <div class="wrapper fadeInDown">
-            <div id="formContent">
-            <!-- Tabs Titles -->
-
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-            </div>
-
-            <!-- Login Form -->
-            <form>
-            <input type="user_name" id="user_name" class="fadeIn second" name="login" placeholder="login">
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+        <div class="login-form">
+            <form action="index.php" method="POST">
+                <h2 class="text-center">Log in</h2>    
+                <div class="form-group">
+                    <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="Username" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" id = "password" name="password" class="form-control" placeholder="Password" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>    
             </form>
-
-            </div>
         </div>
 
         <?php
-            $user_name = $_POST["user_name"];
-            $password = $_POST["password"];
+        $user_name = $_POST["user_name"];
+        $password = $_POST["password"];
 
-        return array($user_name,$password);
+        login_validate($user_name,$password);
+    }
+
+    function login_validate($user_name,$password){
+        echo("user_name: " . $_POST['user_name'] . "<br />\n");
+        echo("password: " . $_POST['password'] . "<br />\n");
+        #TODO: verificare con autenticazione tramite LDAP
     }
 	
     function get_users_list() {  
@@ -86,7 +88,10 @@
 
     }
 
+    
+    login_form()
 ?>
+
 <!--PHP END-->
 
 </body>
