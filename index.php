@@ -8,26 +8,31 @@
 <body>
     <h1>Ldap tool </h1>
 
+<!--PHP START-->
     <?php
-	
-	$ldap_dn = "cn=read-only-admin,dc=example,dc=com";
-	$ldap_password = "password";
-	
-	$ldap_con = ldap_connect("ldap.forumsys.com");
-	
-	ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
-	
-	if (ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
 
-        echo "ldap connected";
-	  
-    } 
-    else {
-		echo "ERROR -> ldap NOT connected";
+    function ldap_connection(){
+        $ldap_dn = "domain\user";
+        $ldap_password = "Abc123";
+        
+        $ldap_con = ldap_connect("ldap.forumsys.com");
+        
+        ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+        
+        if (ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
+
+            echo "ldap connected";
+        
+        } 
+        else {
+            echo "ERROR -> ldap NOT connected";
+        }
+
     }
+	
     
     function get_users_list() {  
-        $filter = "(&(objectCategory=person)(objectClass=user)(distinguishedname=*OU=Users*)(sn=$search*))";
+        #TODO:  ottenere lista di tutti gli utenti con i permessi e i dati
         
     }
 
@@ -36,24 +41,20 @@
     }
 
     function create_user() {  
-	    
+	    #TODO:  creare utente con tutti i suoi parametri e possibilità di assegnarlo ad un gruppo
     }
 
     function create_group() {  
+        #TODO:  creare gruppo con tutti i parametri e possibilità di aggiungerci utenti
     }
 
     function edit_user() {   
-        $filter = "(cn=Albert Einstein)";
-		$result = ldap_search($ldap_con,"dc=example,dc=com",$filter) or exit("Unable to search");
-		$entries = ldap_get_entries($ldap_con, $result);
-		
-		print "<pre>";
-		print_r ($entries);
-        print "</pre>";
+        #TODO:  possibilità di modificare attributi utente e assegnarlo a gruppi
+
     }
-	
-	
+
 ?>
+<!--PHP END-->
 </body>
 </html>
 
