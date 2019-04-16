@@ -15,75 +15,88 @@
 <body>
 
 <!--PHP START-->
-    <?php
-    function ldap_connection(){
-        $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
-        $ldap_password = "password";
-        
-        $ldap_con = ldap_connect("ldap.forumsys.com");       
-        ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
-        
-        if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
-
-          #return TRUE;
-          echo "LDAP OK";
-        } 
-        else {
-          #return FALSE;
-          echo "FUCK LDAP";
-}
-
+<?php
+  function ldap_connection(){
+    echo "ldap_connection:";
+    $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
+    $ldap_password = "password";
+    
+    $ldap_con = ldap_connect("ldap.forumsys.com");       
+    ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+    
+    if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
+      #return TRUE;
+      echo "LDAP OK";
+    } 
+    else {
+      #return FALSE;
+      echo "FUCK LDAP";
     }
+  }
 
-    function login_form(){
-        ?>
-        <div class="login-form">
-            <form action="index.php" method="POST">
-                <h2 class="text-center">Log in</h2>    
-                <div class="form-group">
-                    <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="username" required="required">
-                </div>
-                <div class="form-group">
-                    <input type="password" id = "password" name="password" class="form-control" placeholder="password" required="required">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
-                </div>    
-            </form>
-        </div>
+  function login_form(){
+      ?>
+      <div class="login-form">
+          <form action="index.php" method="POST">
+              <h2 class="text-center">Log in</h2>    
+              <div class="form-group">
+                  <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="username" required="required">
+              </div>
+              <div class="form-group">
+                  <input type="password" id = "password" name="password" class="form-control" placeholder="password" required="required">
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">Log in</button>
+              </div>    
+          </form>
+      </div>
 
-        <?php
-        $user_name = $_POST["user_name"];
-        $password = $_POST["password"];
+      <?php
+      $user_name = $_POST["user_name"];
+      $password = $_POST["password"];
 
-        login_validate($user_name,$password);
+      login_validate($user_name,$password);
+  }
+
+  function login_validate($user_name,$password){
+    echo "login_validate:";
+    #TODO: verificare con autenticazione tramite LDAP
+
+    $ldap_dn = "uid=".$user_name.",dc=example,dc=com";
+    $ldap_password = $password;
+    
+    $ldap_con = ldap_connect("ldap.forumsys.com");
+    ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+
+    if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)) {
+      echo "Authenticated";
+    }    
+    else {
+      echo "Invalid Credential";
     }
+   
+  }
 
-    function login_validate($user_name,$password){
-        #TODO: verificare con autenticazione tramite LDAP
-    }
-	
-    function get_users_list() {  
-        #TODO:  ottenere lista di tutti gli utenti con i permessi e i dati
-        
-    }
+  function get_users_list() {  
+    #TODO:  ottenere lista di tutti gli utenti con i permessi e i dati
+  }
 
-    function get_grups_list() {
-	    #TODO:  ottenere lista di tutti i gruppi con i permessi e i dati
-    }
+  function get_grups_list() {
+    #TODO:  ottenere lista di tutti i gruppi con i permessi e i dati
+  }
 
-    function create_user() {  
-	    #TODO:  creare utente con tutti i suoi parametri e possibilità di assegnarlo ad un gruppo
-    }
+  function create_user() {  
+    #TODO:  creare utente con tutti i suoi parametri e possibilità di assegnarlo ad un gruppo
+  }
 
-    function create_group() {  
-        #TODO:  creare gruppo con tutti i parametri e possibilità di aggiungerci utenti
-    }
+  function create_group() {  
+      #TODO:  creare gruppo con tutti i parametri e possibilità di aggiungerci utenti
+  }
 
-    function edit_user() {   
-        #TODO:  possibilità di modificare attributi utente e assegnarlo a gruppi
+  function edit_user() {   
+      #TODO:  possibilità di modificare attributi utente e assegnarlo a gruppi
 
-    }
+  }
 
 ?>
 
@@ -121,9 +134,15 @@
 </nav>
 <!-- /Header -->
 
+<!--FUNCTIONS TEST -->
+<?php ldap_connection();?>
+<br>
 <?php 
-ldap_connection();
+  $username = "einstein"; #JUST FOR TEST
+  $password = "password"; #JUST FOR TEST
+  login_validate($username,$password );
 ?>
+<!--/FUNCTIONS TEST -->
 
 <!-- Footer -->
 <footer class="page-footer font-small blue">
