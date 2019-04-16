@@ -16,26 +16,23 @@
 
 <!--PHP START-->
     <?php
-
     function ldap_connection(){
-        $ldap_dn = "LDAP_CON_PERMESSI";
-        $ldap_password = "Qwasyx12!";
+        $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
+        $ldap_password = "password";
         
-        $ldap_con = ldap_connect("localhost");
+        $ldap_con = ldap_connect("ldap.forumsys.com");
         
         ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
         
-        if (ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
+        if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
 
-           #return TRUE;
-           echo "ldap connesso";
-        
+          #return TRUE;
+          echo "LDAP OK";
         } 
         else {
-
-            #return FALSE;
-            echo "ldap NON connesso";
-        }
+          #return FALSE;
+          echo "FUCK LDAP";
+}
 
     }
 
