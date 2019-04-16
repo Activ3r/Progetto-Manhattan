@@ -17,7 +17,6 @@
 <!--PHP START-->
 <?php
   function ldap_connection(){
-    echo "ldap_connection:";
     $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
     $ldap_password = "password";
     
@@ -59,7 +58,6 @@
   }
 
   function login_validate($user_name,$password){
-    echo "login_validate:";
     #TODO: verificare con autenticazione tramite LDAP
 
     $ldap_dn = "uid=".$user_name.",dc=example,dc=com";
@@ -69,9 +67,12 @@
     ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
 
     if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)) {
-      echo "Authenticated";
+      #return TRUE;
+      echo " user Authenticated";
+
     }    
     else {
+      #return FALSE;
       echo "Invalid Credential";
     }
    
