@@ -35,13 +35,13 @@
 
   function login_form(){
       ?>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Log in </button>
+      <button id = "login_button" type="button" class="btn btn-warning" data-toggle="modal" data-target="#login_modal">Log in</button>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="ModalLabel">Log in</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -65,10 +65,12 @@
       
 
       <?php
-      $user_name = $_POST["user_name"];
-      $password = $_POST["password"];
+      if ( (!empty($_POST["user_name"])) && (!empty($_POST["password"])) ) {
+        $user_name = $_POST["user_name"];
+        $password = $_POST["password"];
+        login_validate($user_name,$password);
+      } 
 
-      login_validate($user_name,$password);
   }
 
   function login_validate($user_name,$password){
@@ -81,13 +83,11 @@
     ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
 
     if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)) {
-      #return TRUE;
-      echo "user logged";
+      return True;
 
     }    
     else {
-      #return FALSE;
-      echo "user not";
+      return False;
     }
    
   }
@@ -128,7 +128,6 @@
   </tr>
 </table>
 
-<?php login_form()?>
 
 <?php include 'footer.php';?>
 
