@@ -83,6 +83,11 @@
     ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
 
     if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)) {
+      ?>
+        <script>
+          document.getElementById("login_button").innerHTML = $user_name;
+        </script> 
+      <?php
       return True;
 
     }    
