@@ -35,20 +35,34 @@
 
   function login_form(){
       ?>
-      <div class="login-form">
-          <form action="index.php" method="POST">
-              <h2 class="text-center">Log in</h2>    
-              <div class="form-group">
-                  <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="username" required="required">
-              </div>
-              <div class="form-group">
-                  <input type="password" id = "password" name="password" class="form-control" placeholder="password" required="required">
-              </div>
-              <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Log in</button>
-              </div>    
-          </form>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Log in </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="index.php" method="POST">
+                <div class="form-group">
+                    <input type="text" id = "user_name" name="user_name" class="form-control" placeholder="username" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" id = "password" name="password" class="form-control" placeholder="password" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>    
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
+      
 
       <?php
       $user_name = $_POST["user_name"];
@@ -113,6 +127,8 @@
     <td><?php ldap_connection()?></td>
   </tr>
 </table>
+
+<?php login_form()?>
 
 <?php include 'footer.php';?>
 
