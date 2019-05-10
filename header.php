@@ -75,7 +75,7 @@ function login_form(){
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="visualizza_utenti.php">utenti</a>
-          <a class="dropdown-item" href="#">gruppi</a>
+          <a class="dropdown-item" href="visualizza_gruppi.php">gruppi</a>
         </div>
       </li>
        <li class="nav-item dropdown">

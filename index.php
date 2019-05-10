@@ -17,7 +17,7 @@
 
 <?php
 
-include 'header.php';
+require('header.php');
 
   function ldap_connection(){
     $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
@@ -72,7 +72,8 @@ include 'header.php';
 </table>
 
 
-<?php include 'footer.php';?>
+<?php require('footer.php');?>
+
 
 </body>
 </html>

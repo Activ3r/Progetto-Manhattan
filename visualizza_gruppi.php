@@ -15,7 +15,6 @@
 <body>
 
 <?php include 'header.php';?>
-
 <h1>visualizza gruppi</h1>
 
 <?php include 'footer.php';?>
