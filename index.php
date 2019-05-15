@@ -27,12 +27,14 @@ require('header.php');
     ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
     
     if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)) {
-      #return TRUE;
       echo "Connected";
+      return TRUE;
+      
     } 
     else {
-      #return FALSE;
       echo "Error";
+      return FALSE;
+      
     }
 
     /* TEST
