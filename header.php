@@ -40,7 +40,7 @@ function login_form(){
 
   function login_validate($user_name,$password){
     #TODO: verificare con autenticazione tramite LDAP
-    #TODO. utilizzare la funzione ldap_connection() per verificare prima del login
+
     $ldap_dn = "uid=".$user_name.",dc=example,dc=com";
     $ldap_password = $password;
     
