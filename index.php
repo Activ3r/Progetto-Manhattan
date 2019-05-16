@@ -16,8 +16,14 @@
 <body>
 
 <?php
+// imported only php file
+require_once('ldap_connection.php');
+require_once('getUserList.php');
 
-require('header.php');
+//header
+require_once('header.php');
+
+
 
   function ldap_connection(){
     $ldap_dn = "cn=dominio-SERVER-PROGETTO-CA,dc=dominio,dc=local";
