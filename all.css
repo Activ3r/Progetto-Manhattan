@@ -37,3 +37,11 @@ tr:nth-child(even) {
   right: 15px;
 
 }
+#user_form {
+  margin: 0 auto;
+  width: 75%; 
+}
+.page_titile {
+  text-align:center;
+
+}
