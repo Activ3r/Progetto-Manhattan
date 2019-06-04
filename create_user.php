@@ -26,10 +26,6 @@ function create_user_form(){
                 <label for="cognome">Cognome</label>
                 <input type="cognome" class="form-control" id="cognome" placeholder="inserisci cognome">
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
             <button type="submit" class="btn btn-primary">Crea</button>
         </form>
     </div>

@@ -23,7 +23,7 @@ table {
   border-collapse: collapse;
   width: 50%;
   text-align: center;
-  
+ 
 }
 
 td, th {
@@ -37,4 +37,8 @@ tr:nth-child(even) {
 #login_button {
   right: 15px;
 
+}
+#user_form {
+  width: 500px;
+  margin: auto;
 }
