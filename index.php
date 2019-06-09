@@ -30,7 +30,7 @@ $prova->get_users_list();
 
 
   function get_grups_list() {
-    #TODO:  ottenere lista di tutti i gruppi con i permessi e i dati
+    #TODO:  ottenere lista di tutti i gruppi e utenti contenuti
   }
 
   function create_user() {  

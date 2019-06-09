@@ -9,16 +9,18 @@ class ldap{
     #Test
     private $ldap_dn = "cn=read-only-admin,dc=example,dc=com";
     private $ldap_password = "password";
+
     private $ldap_con;
     private $ldap_status=true;
 
     function __construct(){
         
         #Original
-        // $ldap_con = ldap_connect("127.0.0.1");
+        // $this->$ldap_con = ldap_connect("127.0.0.1");
         
         #Test
     $this->$ldap_con = ldap_connect("ldap.forumsys.com");
+
     echo $this->$ldap_con;
 
         ldap_set_option($this->$ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
@@ -36,13 +38,17 @@ class ldap{
 
     function get_users_list() {  
         echo $this->$ldap_con;
-        #TODO:  ottenere lista di tutti gli utenti con i permessi e i dati
+        #TODO:  ottenere lista di tutti gli utenti  e i dati
         
-        $filter = "(cn=*)";
+        
+
         #original
+        // $filter = "(cn=Users)";
         // $result =  ldap_search($ldap_con, "dc=dominio,dc=local",$filter ) or exit ("Unable to search");
 
         #Test
+        $filter = "(&(objectClass=uniquemember)(cn=*))";
+        // $filter="(ou=*)";
         $result = ldap_search($this->$ldap_con,"dc=example,dc=com",$filter) or exit("Unable to search");
         
         $entries = ldap_get_entries($this->$ldap_con,$result);
